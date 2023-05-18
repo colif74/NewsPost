@@ -39,6 +39,7 @@ class Category(models.Model):
        category = models.CharField(max_length=2, choices=POSITION, default='HN')
 
 class Post(models.Model):
+    objects = None
     date_in = models.DateField(auto_now_add=True)
     header = models.CharField(max_length=255)
     contents = models.TextField()
@@ -56,7 +57,7 @@ class Post(models.Model):
 
 
     def preview(self):
-          return f"{self.contents[:124]}..."
+        return f"{self.contents[:124]}..."
 
 
 
@@ -66,13 +67,14 @@ class PostCategory(models.Model):
 
 
 class Comment(models.Model):
+    objects = None
     text_comment = models.TextField()
     date_creat = models.DateField(auto_now_add=True)
     rating_comment = models.IntegerField(default=0)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def like(self):
-        self.rating_commentt += 1
+        self.rating_comment += 1
         self.save()
 
     def dislike(self):
