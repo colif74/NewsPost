@@ -1,0 +1,5 @@
+ from news.models import*
+>>> user_11 = User.objects.create_user('Becon Beg')
+>>> user_12 = User.objects.create_user('Auster Hill')
+>>> user_11.save()
+>>> user_12.save() 
