@@ -9,7 +9,6 @@ from django.db.models import Sum
 
 class Author(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    email = models.EmailField(default=True)
     rating = models.IntegerField(default=0)
 
     def update_rating(self):
@@ -33,7 +32,7 @@ class Category(models.Model):
         ('sport', 'Спортивные новости')
     ]
 
-    post_or_news = models.CharField(max_length=4, help_text="news" or "post")
+    post_or_news = models.CharField(max_length=4, help_text="news" or "post", default='news')
     category = models.CharField(max_length=15, choices=POSITION, default='host news')
 
 
