@@ -24,20 +24,20 @@ class Author(models.Model):
 
 
 class Category(models.Model):
-    POSITION = [
-        ('economy', 'Экономика'),
-        ('politician', 'Политика'),
-        ('world news', 'Мировые новости'),
-        ('host news', 'Местные новости'),
-        ('sport', 'Спортивные новости')
-    ]
-
-    post_or_news = models.CharField(max_length=4, help_text="news" or "post", default='news')
-    category = models.CharField(max_length=15, choices=POSITION, default='host news')
+    name = models.CharField(max_length=20, unique=True)
 
 
 class Post(models.Model):
     objects = None
+     news = 'NW'
+    states = 'PS'
+
+    TYPE = [
+        (news, 'Новость'),
+        (states, 'Статья')
+    ]
+
+    post_tip = models.CharField(max_length=10, choices=TYPE, default=states)
     date_in = models.DateField(auto_now_add=True)
     header = models.CharField(max_length=255)
     contents = models.TextField(blank=True)
