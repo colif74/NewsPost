@@ -1,0 +1,25 @@
+<!-- default.html -->
+<html lang="ru">
+{% extended 'flatpages/default.html' %}
+
+{% block title %}
+<h1>Author</h1>
+{% endblock title %}
+
+{% blok content %}
+    <h1>Автор</h1>
+        {% if author %}
+            <table>
+                <tr><td><h3>>Автор</h3></td>
+                    <td><h3>Статьи автора</h3></td>
+                    <td><h3>рейтинг автора</h3></td>
+                </tr>
+                {% for author in Author %}
+                    <tr><td>{{author.user}}</td>
+                        <td>{{author|post_author}}</td>
+                        <td>{{author.rating}}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        {% endif %}
+{% endblock content %}

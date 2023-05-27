@@ -1,0 +1,42 @@
+{% extends 'flatpages/default.html' %}
+
+{% load custom_filter %}
+
+{% load custom_tgs %}
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Новости</title>
+</head>
+
+{% block title %}
+News
+{% endblock title %}
+
+{% block content %}
+   <h1>Все новости</h1>
+   <h3>{% current_time '%b %d %Y' %}</h3>
+   <h3> {{ next_Post|default_if_none:"Главные события дня" }} </h3>
+      <h2>Колличество статей: {{ news|length  }} </h2>
+   <hr>
+   {% if Post %}
+       <table>
+           <tr>
+               <td><h2>Название статьи</h2></td>
+               <td><h2>Текст статьи&nbsp;</h2></td>
+               <td><h2> Категория статьи</h2></td>
+               <td><h2> Дата публикации</h2></td>
+           </tr>
+           {% for news in Post %}
+            <tr>
+              <td>{{ news.header}}</td>
+              <td>{{ news.contents|truncatechars:20|censor }}</td>
+              <td>{{ news.category.Category }}</td>
+              <td>{{ news.time_now|date:'h m d M Y' }}</td>
+            </tr>
+            {% endfor %}
+       </table>
+   {% else %}
+       <h2>Новости нет!</h2>
+   {% endif %}
+{% endblock content %}
