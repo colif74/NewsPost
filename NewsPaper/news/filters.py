@@ -15,9 +15,6 @@ class PostFilter(FilterSet):
            # поиск по названию
            'heander': ['icontains'],
            # количество товаров должно быть больше или равно
-           'quantity': ['gt'],
-           'post_tip': [post_tip__in =
-               'news',  # цена должна быть меньше или равна указанной
-               'states',  # цена должна быть больше или равна указанной
-           ],
+           'post_tip': ['in' =
+               ['news','states']],
        }
