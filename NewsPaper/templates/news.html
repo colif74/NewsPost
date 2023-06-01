@@ -36,7 +36,7 @@
                       <td>{{ post.header}}</td>
                       <td>{{ post.contents|truncatechars:50}}</td>
                       <td>{{ post.category }}</td>
-                      <td>{{ post.time_now|date:'h m d M Y' }}</td>
+                      <td>{{ post.date_in|date:'d M Y' }}</td>
                     </tr>
                     {% endfor %}
                </table>
