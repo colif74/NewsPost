@@ -23,7 +23,7 @@ class AuthorDetail(DetailView):
 
 class PostList(ListView):
     model = Post
-    ordering = 'header'
+    ordering = '-time_create'
     template_name = 'news.html'
     context_object_name = 'posts'
     paginate_by = 4
