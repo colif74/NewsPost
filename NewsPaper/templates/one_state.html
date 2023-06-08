@@ -1,0 +1,26 @@
+<!--  наследуемся от шаблона default.html, который мы создавали для flatpages -->
+{% extends 'flatpages/default.html' %}
+
+<!-- Название у нас будет Product -->
+{% block title %}
+Статья
+{% endblock title %}
+
+<!-- В контенте на странице мы выводим сам товар, идентификатор которого был передан в url -->
+{% block content %}
+{% load censure %}
+
+<h1>{{ post.header | censor }}</h1>
+<hr>
+<h5>{{ post.date_in |date:'d M Y'  }}</h5>
+<p style="text-indent: 25px;">
+
+    {{post.contets | censor}}
+
+
+</p>
+<hr>
+<a class="nav-link" href="/news/{{post.id}}/delete/">Удалить</a>
+<a class="nav-link" href="{{post.id}}/edit/">Редактировать</a>
+
+{% endblock content %}
