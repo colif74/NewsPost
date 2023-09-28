@@ -8,13 +8,10 @@ from .views import PostList, AuthorList, PostDetail, \
 from rest_framework import routers
 
 
-
 router = routers.DefaultRouter()
 router.register(r'Author', AuthorViewset)
 router.register(r'Post', PostViewset)
 # router.register(r'Category', views.CategoryViewest)
-
-
 
 
 urlpatterns = [path('', IndexView.as_view()),
@@ -22,7 +19,7 @@ urlpatterns = [path('', IndexView.as_view()),
                path('login/', LoginView.as_view(template_name='account/login.html'), name='login'),
                path('logout/', LogoutView.as_view(template_name='account/logout.html'), name='logout'),
                path('signup/', BaseRegisterView.as_view(template_name='signup.html'), name='signup'),
-               path('news/', PostList.as_view(), name='posts-list'),
+               path('news/', PostList.as_view(), name='posts_list'),
                path('author/', AuthorList.as_view(), name='authors'),
                path('author/<int:pk>', AuthorDetail.as_view(), name='author'),
                path('news/<int:pk>/', PostDetail.as_view(), name='post_detail'),

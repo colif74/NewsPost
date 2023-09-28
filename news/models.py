@@ -15,6 +15,9 @@ class Author(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     rating = models.IntegerField(default=0)
 
+    def __str__(self):
+        return f'{self.user}'
+
     def update_rating(self):
         author_rating_post = Post.objects.filter(author_id=self.pk).\
             aggregate(post_rating_sum=Coalesce(Sum('rating_post') * 3, 0))
@@ -34,6 +37,7 @@ class Author(models.Model):
 
 
 class Category(models.Model):
+
     objects = None
     name = models.CharField(max_length=20, default='местные новости', help_text='category name')
     subscribers = models.ManyToManyField(User, blank=True, null=True, related_name='subscribers')

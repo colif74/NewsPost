@@ -169,7 +169,7 @@ class PostList(ListView):
     def get_queryset(self):
         queryset = super().get_queryset()
         self.filterset = PostFilter(self.request.GET, queryset)
-        return self.filterset.qs
+        return queryset
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -233,7 +233,8 @@ class ArticleCreate(PermissionRequiredMixin, CreateView):
     permission_required = ('post.add_post')
     form_class = PostForm
     model = Post
-    template_name = 'article_create.html'
+    template_name = ('a'
+                     'rticle_create.html')
 
     def form_valid(self, form):
         post = form.save(commit=False)
